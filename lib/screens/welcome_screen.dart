@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import '../components/app_drawer.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  static const route = '/welcome'; // Nome usado nas rotas
+  static const route = '/welcome';
   const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Boas-vindas')),
-      drawer: const AppDrawer(), // Menu lateral reutilizável
+      drawer: const AppDrawer(),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

@@ -11,11 +11,11 @@ class SorteioScreen extends StatefulWidget {
 }
 
 class _SorteioScreenState extends State<SorteioScreen> {
-  int? _numero; // Armazena o número sorteado
+  int? _numero;
 
   void _sortear() {
-    final n = Random().nextInt(100) + 1; // Gera número de 1 a 100
-    setState(() => _numero = n); // Atualiza o estado da tela
+    final n = Random().nextInt(100) + 1;
+    setState(() => _numero = n);
 
     if (n == 50) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -28,7 +28,7 @@ class _SorteioScreenState extends State<SorteioScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Sorteio')),
-      drawer: const AppDrawer(), // Menu lateral
+      drawer: const AppDrawer(),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -41,7 +41,7 @@ class _SorteioScreenState extends State<SorteioScreen> {
             ElevatedButton.icon(
               icon: const Icon(Icons.casino),
               label: const Text('Sortear número'),
-              onPressed: _sortear, // Chama a função de sorteio
+              onPressed: _sortear,
             ),
           ],
         ),

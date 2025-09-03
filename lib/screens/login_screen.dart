@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 import 'welcome_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  static const route = '/login'; // Nome da rota para navegação
+  static const route = '/login';
   const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-// Parte que gerencia o estado da tela
 class _LoginScreenState extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>(); // Controla o formulário
-  final _emailCtrl = TextEditingController(); // Controla o campo de e-mail
-  final _senhaCtrl = TextEditingController(); // Controla o campo de senha
-  bool _obscure = true; // Controla se a senha está oculta
+  final _formKey = GlobalKey<FormState>();
+  final _emailCtrl = TextEditingController();
+  final _senhaCtrl = TextEditingController();
+  bool _obscure = true;
 
   @override
   void dispose() {
-    _emailCtrl.dispose(); // Libera memória
+    _emailCtrl.dispose();
     _senhaCtrl.dispose();
     super.dispose();
   }
@@ -26,13 +25,12 @@ class _LoginScreenState extends State<LoginScreen> {
   // Lógica do botão Entrar
   void _login() {
     if (_formKey.currentState!.validate()) {
-      final email = _emailCtrl.text.trim(); // Pega valor digitado
+      final email = _emailCtrl.text.trim();
       final senha = _senhaCtrl.text;
 
       if (email == 'admin' && senha == '123') {
         Navigator.pushReplacementNamed(context, WelcomeScreen.route);
       } else {
-        // Mostra erro se estiver errado
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Credenciais inválidas. Use e-mail: admin e senha: 123.'),
@@ -42,20 +40,19 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  // Interface da tela
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange, // fundo laranja
+      backgroundColor: Colors.orange,
       body: Center(
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 420), // Para desktop também
+          constraints: const BoxConstraints(maxWidth: 420),
           child: Card(
             margin: const EdgeInsets.all(24),
             child: Padding(
               padding: const EdgeInsets.all(24),
               child: Form(
-                key: _formKey, // Conecta o form à chave
+                key: _formKey,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -67,7 +64,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text('Login', style: Theme.of(context).textTheme.headlineSmall),
                     const SizedBox(height: 24),
 
-                    // Campo de e-mail
                     TextFormField(
                       controller: _emailCtrl,
                       decoration: const InputDecoration(
@@ -81,10 +77,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 12),
 
-                    // Campo de senha
                     TextFormField(
                       controller: _senhaCtrl,
-                      obscureText: _obscure, // Esconde ou mostra
+                      obscureText: _obscure,
                       decoration: InputDecoration(
                         labelText: 'Senha',
                         prefixIcon: const Icon(Icons.lock),
@@ -99,7 +94,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 20),
 
-                    // Botão Entrar
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton.icon(

@@ -76,7 +76,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         var parts = expr.split('/');
         return double.parse(parts[0]) / double.parse(parts[1]);
       default:
-        return double.parse(expr); // nenhum operador encontrado
+        return double.parse(expr);
     }
   }
 
@@ -96,10 +96,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       drawer: const AppDrawer(),
       body: Center(
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 400), // limite largura
+          constraints: const BoxConstraints(maxWidth: 400),
           child: Column(
             children: [
-              // Display
               Container(
                 padding: const EdgeInsets.all(16),
                 alignment: Alignment.centerRight,
@@ -149,14 +148,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     }
 
                     return AspectRatio(
-                      aspectRatio: 1, // mantém quadrado
+                      aspectRatio: 1,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: bgColor,
                           foregroundColor: fgColor,
                           textStyle: const TextStyle(fontSize: 22),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8), // cantos arredondados
+                            borderRadius: BorderRadius.circular(8),
                           ),
                         ),
                         onPressed: () => _onButtonPressed(value),
